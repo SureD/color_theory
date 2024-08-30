@@ -1,10 +1,15 @@
 <template>
-  <div ref="container"></div>
+  <div>
+    <div ref="container"></div>
+    <button @click="toggleView">Toggle View</button>
+  </div>
 </template>
 
 <script>
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import { onMounted, ref } from 'vue'
 import ColorSensitivity from '@/utils/ColorSensitivity.ts' // Adjust the import path as needed
 
@@ -13,13 +18,37 @@ export default {
   setup() {
     const container = ref(null)
     let scene, camera, renderer, controls
+    let currentView = 'sensitivity'
+    let font
 
     onMounted(() => {
-      initThreeJS()
-      drawAxes()
-      drawColorSensitivityCurves()
-      animate()
+      loadFont().then(() => {
+        initThreeJS()
+        drawSensitivityView()
+        animate()
+      })
     })
+
+    function loadFont() {
+      return new Promise((resolve) => {
+        const loader = new FontLoader()
+        loader.load('src/utils/helvetiker_regular.typeface.json', (loadedFont) => {
+          font = loadedFont
+          resolve()
+        })
+      })
+    }
+
+    function toggleView() {
+      scene.clear()
+      if (currentView === 'sensitivity') {
+        currentView = 'colorSpace'
+        drawColorSpaceView()
+      } else {
+        currentView = 'sensitivity'
+        drawSensitivityView()
+      }
+    }
 
     function initThreeJS() {
       scene = new THREE.Scene()
@@ -52,6 +81,58 @@ export default {
         MIDDLE: THREE.MOUSE.DOLLY,
         RIGHT: THREE.MOUSE.PAN
       }
+    }
+
+    function drawSensitivityView() {
+      camera.position.set(0, 0, 10)
+      camera.lookAt(0, 0, 0)
+      controls.enableRotate = false
+      drawAxes()
+      drawColorSensitivityCurves()
+    }
+
+    function drawColorSpaceView() {
+      camera.position.set(5, 5, 5)
+      camera.lookAt(0, 0, 0)
+      controls.enableRotate = true
+      drawColorCube()
+    }
+
+    function drawColorCube() {
+      const cubeSize = 2
+      const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize)
+      const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true })
+      const cube = new THREE.Mesh(geometry, material)
+      scene.add(cube)
+
+      // Add color vertices
+      const vertices = [
+        [0, 0, 0],
+        [1, 0, 0],
+        [1, 1, 0],
+        [0, 1, 0],
+        [0, 0, 1],
+        [1, 0, 1],
+        [1, 1, 1],
+        [0, 1, 1]
+      ]
+
+      vertices.forEach(([r, g, b]) => {
+        const sphereGeometry = new THREE.SphereGeometry(0.05)
+        const sphereMaterial = new THREE.MeshBasicMaterial({ color: new THREE.Color(r, g, b) })
+        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
+        sphere.position.set(
+          r * cubeSize - cubeSize / 2,
+          g * cubeSize - cubeSize / 2,
+          b * cubeSize - cubeSize / 2
+        )
+        scene.add(sphere)
+      })
+
+      // Add axis labels
+      addLabel('R', new THREE.Vector3(cubeSize / 2 + 0.2, -cubeSize / 2, -cubeSize / 2))
+      addLabel('G', new THREE.Vector3(-cubeSize / 2, cubeSize / 2 + 0.2, -cubeSize / 2))
+      addLabel('B', new THREE.Vector3(-cubeSize / 2, -cubeSize / 2, cubeSize / 2 + 0.2))
     }
 
     function drawAxes() {
@@ -119,29 +200,22 @@ export default {
     }
 
     function addLabel(text, position, isVertical = false) {
-      const canvas = document.createElement('canvas')
-      canvas.width = isVertical ? 64 : 128
-      canvas.height = isVertical ? 128 : 64
-      const context = canvas.getContext('2d')
-      context.font = 'bold 48px Arial'
-      context.textAlign = 'center'
-      context.textBaseline = 'middle'
-      context.fillStyle = 'black'
+      const textGeometry = new TextGeometry(text, {
+        font: font,
+        size: 0.2,
+        height: 0.01
+      })
+
+      const material = new THREE.MeshBasicMaterial({ color: 0x000000 })
+      const textMesh = new THREE.Mesh(textGeometry, material)
+
+      textMesh.position.copy(position)
 
       if (isVertical) {
-        context.rotate(-Math.PI / 2)
-        context.translate(-canvas.height / 2, canvas.width / 2)
+        textMesh.rotation.z = -Math.PI / 2
       }
 
-      context.fillText(text, isVertical ? 0 : canvas.width / 2, isVertical ? 0 : canvas.height / 2)
-
-      const texture = new THREE.CanvasTexture(canvas)
-      texture.minFilter = THREE.LinearFilter
-      const material = new THREE.SpriteMaterial({ map: texture })
-      const sprite = new THREE.Sprite(material)
-      sprite.position.copy(position)
-      sprite.scale.set(isVertical ? 0.375 : 0.375, isVertical ? 0.75 : 0.375, 1) // Adjusted scale for y-axis labels
-      scene.add(sprite)
+      scene.add(textMesh)
     }
 
     function drawColorSensitivityCurves() {
@@ -178,7 +252,7 @@ export default {
       renderer.render(scene, camera)
     }
 
-    return { container }
+    return { container, toggleView }
   }
 }
 </script>
