@@ -22,6 +22,14 @@ export default {
     height: {
       type: Number,
       default: 550
+    },
+    yMin: {
+      type: Number,
+      default: -0.5
+    },
+    yMax: {
+      type: Number,
+      default: 4
     }
   },
   data() {
@@ -29,7 +37,6 @@ export default {
       colorTypes: ['red', 'green', 'blue'],
       colorSensitivities: {},
       xRange: [380, 780],
-      yRange: [0, 1],
       margin: { top: 40, right: 40, bottom: 100, left: 60 }
     }
   },
@@ -39,6 +46,9 @@ export default {
     },
     graphHeight() {
       return this.height - this.margin.top - this.margin.bottom
+    },
+    yRange() {
+      return [this.yMin, this.yMax]
     }
   },
   mounted() {
@@ -130,7 +140,8 @@ export default {
       // Y-axis tick marks
       ctx.textAlign = 'right'
       ctx.textBaseline = 'middle'
-      for (let y = 0; y <= 1; y += 0.2) {
+      const yStep = (this.yMax - this.yMin) / 10
+      for (let y = this.yMin; y <= this.yMax; y += yStep) {
         const canvasY = this.mapY(y)
         ctx.moveTo(this.margin.left - 5, canvasY)
         ctx.lineTo(this.margin.left, canvasY)
