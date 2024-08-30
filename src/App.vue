@@ -14,7 +14,8 @@ import MyIcon from './components/icons/IconColorSure.vue'
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/color-theory">ColorTheory</RouterLink>
+        <RouterLink to="/color-theory">Color Theory</RouterLink>
+        <RouterLink to="/color-sensitivity">Color Sensitivity</RouterLink>
       </nav>
     </div>
   </header>

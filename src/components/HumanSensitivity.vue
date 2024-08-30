@@ -6,6 +6,17 @@
       color receptors.
     </p>
     <canvas ref="canvas" :width="width" :height="height"></canvas>
+    <div class="wavelength-slider">
+      <input
+        type="range"
+        :min="xRange[0]"
+        :max="xRange[1]"
+        v-model.number="selectedWavelength"
+        @input="updateWavelength"
+        :style="sliderStyle"
+      />
+      <span>Selected Wavelength: {{ selectedWavelength }} nm</span>
+    </div>
   </div>
 </template>
 
@@ -37,7 +48,8 @@ export default {
       colorTypes: ['red', 'green', 'blue'],
       colorSensitivities: {},
       xRange: [380, 780],
-      margin: { top: 40, right: 40, bottom: 100, left: 60 }
+      margin: { top: 40, right: 40, bottom: 100, left: 60 },
+      selectedWavelength: 550
     }
   },
   computed: {
@@ -49,6 +61,13 @@ export default {
     },
     yRange() {
       return [this.yMin, this.yMax]
+    },
+    sliderStyle() {
+      const color = this.wavelengthToColor(this.selectedWavelength)
+      return {
+        background: `linear-gradient(to right, ${color}, ${color})`,
+        WebkitAppearance: 'none'
+      }
     }
   },
   mounted() {
@@ -83,6 +102,12 @@ export default {
 
       // Draw color bar
       this.drawColorBar(ctx)
+
+      // Draw legend
+      this.drawLegend(ctx)
+
+      // Draw wavelength indicator
+      this.drawWavelengthIndicator()
     },
     drawGrid(ctx) {
       ctx.beginPath()
@@ -167,7 +192,7 @@ export default {
     },
     plotFunction(ctx, colorType) {
       ctx.beginPath()
-      ctx.strokeStyle = colorType
+      ctx.strokeStyle = this.getColorForType(colorType)
       ctx.lineWidth = 2
 
       const sensitivity = this.colorSensitivities[colorType]
@@ -211,55 +236,87 @@ export default {
         ctx.fillText(x.toString(), canvasX, barBottom + 5)
       }
     },
+    drawLegend(ctx) {
+      const legendX = this.width - this.margin.right - 100
+      const legendY = this.margin.top + 20
+      const lineLength = 20
+      const lineSpacing = 25
+
+      this.colorTypes.forEach((colorType, index) => {
+        const y = legendY + index * lineSpacing
+
+        ctx.beginPath()
+        ctx.strokeStyle = this.getColorForType(colorType)
+        ctx.lineWidth = 2
+        ctx.moveTo(legendX, y)
+        ctx.lineTo(legendX + lineLength, y)
+        ctx.stroke()
+
+        ctx.fillStyle = '#000000'
+        ctx.font = '14px Arial'
+        ctx.textAlign = 'left'
+        ctx.textBaseline = 'middle'
+        ctx.fillText(
+          colorType.charAt(0).toUpperCase() + colorType.slice(1),
+          legendX + lineLength + 5,
+          y
+        )
+      })
+    },
+    drawWavelengthIndicator() {
+      const canvas = this.$refs.canvas
+      const ctx = canvas.getContext('2d')
+
+      const x = this.mapX(this.selectedWavelength)
+
+      // Draw vertical line
+      ctx.beginPath()
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)'
+      ctx.lineWidth = 2
+      ctx.setLineDash([5, 5])
+      ctx.moveTo(x, this.margin.top)
+      ctx.lineTo(x, this.height - this.margin.bottom)
+      ctx.stroke()
+      ctx.setLineDash([])
+
+      // Draw wavelength value
+      ctx.fillStyle = '#000000'
+      ctx.font = 'bold 14px Arial'
+      ctx.textAlign = 'center'
+      ctx.fillText(`${this.selectedWavelength} nm`, x, this.margin.top - 10)
+
+      // Draw sensitivity values for each color type
+      this.colorTypes.forEach((colorType, index) => {
+        const sensitivity = this.colorSensitivities[colorType].getYFromX(this.selectedWavelength)
+        const y = this.mapY(sensitivity)
+
+        // Draw point
+        ctx.beginPath()
+        ctx.arc(x, y, 4, 0, 2 * Math.PI)
+        ctx.fillStyle = this.getColorForType(colorType)
+        ctx.fill()
+        ctx.strokeStyle = '#000000'
+        ctx.lineWidth = 1
+        ctx.stroke()
+
+        // Draw text background
+        const text = `${colorType}: ${sensitivity.toFixed(3)}`
+        const textWidth = ctx.measureText(text).width
+        const padding = 4
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'
+        ctx.fillRect(x + 10, y - 10 + index * 20, textWidth + padding * 2, 20)
+
+        // Draw text
+        ctx.fillStyle = '#000000'
+        ctx.font = 'bold 12px Arial'
+        ctx.textAlign = 'left'
+        ctx.textBaseline = 'middle'
+        ctx.fillText(text, x + 10 + padding, y + index * 20)
+      })
+    },
     wavelengthToColor(wavelength) {
-      let r, g, b
-      if (wavelength >= 380 && wavelength < 440) {
-        r = -(wavelength - 440) / (440 - 380)
-        g = 0
-        b = 1
-      } else if (wavelength >= 440 && wavelength < 490) {
-        r = 0
-        g = (wavelength - 440) / (490 - 440)
-        b = 1
-      } else if (wavelength >= 490 && wavelength < 510) {
-        r = 0
-        g = 1
-        b = -(wavelength - 510) / (510 - 490)
-      } else if (wavelength >= 510 && wavelength < 580) {
-        r = (wavelength - 510) / (580 - 510)
-        g = 1
-        b = 0
-      } else if (wavelength >= 580 && wavelength < 645) {
-        r = 1
-        g = -(wavelength - 645) / (645 - 580)
-        b = 0
-      } else if (wavelength >= 645 && wavelength <= 780) {
-        r = 1
-        g = 0
-        b = 0
-      } else {
-        r = 0
-        g = 0
-        b = 0
-      }
-
-      // Intensity correction
-      let factor
-      if (wavelength >= 380 && wavelength < 420) {
-        factor = 0.3 + (0.7 * (wavelength - 380)) / (420 - 380)
-      } else if (wavelength >= 420 && wavelength < 701) {
-        factor = 1
-      } else if (wavelength >= 701 && wavelength <= 780) {
-        factor = 0.3 + (0.7 * (780 - wavelength)) / (780 - 700)
-      } else {
-        factor = 0
-      }
-
-      r = Math.round(255 * Math.pow(r * factor, 0.8))
-      g = Math.round(255 * Math.pow(g * factor, 0.8))
-      b = Math.round(255 * Math.pow(b * factor, 0.8))
-
-      return `rgb(${r},${g},${b})`
+      const color = ColorSensitivity.getColor(wavelength)
+      return `rgb(${Math.round(color.r * 255)},${Math.round(color.g * 255)},${Math.round(color.b * 255)})`
     },
     mapX(x) {
       return (
@@ -273,6 +330,18 @@ export default {
         this.margin.bottom -
         ((y - this.yRange[0]) / (this.yRange[1] - this.yRange[0])) * this.graphHeight
       )
+    },
+    updateWavelength() {
+      this.drawGraph()
+      this.drawWavelengthIndicator()
+    },
+    getColorForType(colorType) {
+      const colors = {
+        red: 'rgb(255, 0, 0)',
+        green: 'rgb(0, 128, 0)',
+        blue: 'rgb(0, 0, 255)'
+      }
+      return colors[colorType] || colorType
     }
   }
 }
@@ -281,5 +350,47 @@ export default {
 <style scoped>
 .human-sensitivity {
   display: inline-block;
+}
+
+.wavelength-slider {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.wavelength-slider input[type='range'] {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.wavelength-slider input[type='range']:hover {
+  opacity: 1;
+}
+
+.wavelength-slider input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #000000;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.wavelength-slider input[type='range']::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #000000;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 </style>

@@ -59,8 +59,6 @@ export default class ColorSensitivity {
   }
 
   getYFromX(x: number): number {
-    console.log(123)
-    console.log(ColorSensitivity.sensitivityData)
     // Find the two closest data points
     const index = ColorSensitivity.sensitivityData.findIndex((point) => point.x >= x)
     if (index === -1) return 0 // x is out of range
@@ -74,7 +72,7 @@ export default class ColorSensitivity {
     return lower.y[colorIndex] + t * (upper.y[colorIndex] - lower.y[colorIndex])
   }
 
-  getColor(x: number): Color {
+  static getColor(x: number): Color {
     const hue = (x - 380) / 400
     return new Color().setHSL(hue, 1, 0.5)
   }

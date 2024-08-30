@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/color-theory',
       name: 'color-theory',
       component: () => import('../views/ColorTheory.vue')
+    },
+    {
+      path: '/color-sensitivity',
+      name: 'color-sensitivity',
+      component: () => import('../components/ColorSensitivityView.vue')
     }
   ]
 })
