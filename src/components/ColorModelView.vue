@@ -13,6 +13,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import { onMounted, ref } from 'vue'
+import { ColorModelGenerator } from '@/utils/color_model_genrator'
 
 export default {
   name: 'ColorModelView',
@@ -20,6 +21,8 @@ export default {
     const container = ref(null)
     let scene, camera, renderer, controls
     let font
+    let colorModelGenerator = new ColorModelGenerator()
+    const scaleFactor = 5
 
     onMounted(() => {
       console.log('Component mounted')
@@ -27,6 +30,7 @@ export default {
         console.log('Font loaded')
         initThreeJS()
         drawColorSpaceModel()
+        drawLoctus()
         animate()
       })
     })
@@ -54,7 +58,6 @@ export default {
       scene.add(ambientLight)
 
       const aspect = 1 // Square renderer
-      const frustumSize = 10
       camera = new THREE.PerspectiveCamera(
         75, // Field of view
         aspect,
@@ -81,15 +84,76 @@ export default {
       }
     }
 
+    function drawLoctus() {
+      const wavelengthRange = colorModelGenerator.getWavelengthRange()
+      const wavelengths = []
+      for (let i = wavelengthRange.min; i <= wavelengthRange.max; i++) {
+        wavelengths.push(i)
+      }
+      const sensitivities = wavelengths.map((wavelength) =>
+        colorModelGenerator.wavelengthToSensitivity(wavelength, true)
+      )
+
+      const geometry = new THREE.BufferGeometry()
+      const positions = []
+      const colors = []
+
+      sensitivities.forEach((v, index) => {
+        positions.push(v.x * scaleFactor, v.y * scaleFactor, v.z * scaleFactor)
+
+        // Calculate color based on wavelength
+        const t = 1 - index / (wavelengths.length - 1) // Invert t so 0 is red (max wavelength) and 1 is violet (min wavelength)
+        let r, g, b
+
+        if (t < 0.2) {
+          // Violet to Blue
+          r = t / 0.2
+          g = 0
+          b = 1
+        } else if (t < 0.4) {
+          // Blue to Cyan
+          r = 0
+          g = (t - 0.2) / 0.2
+          b = 1
+        } else if (t < 0.6) {
+          // Cyan to Green
+          r = 0
+          g = 1
+          b = 1 - (t - 0.4) / 0.2
+        } else if (t < 0.8) {
+          // Green to Yellow
+          r = (t - 0.6) / 0.2
+          g = 1
+          b = 0
+        } else {
+          // Yellow to Red
+          r = 1
+          g = 1 - (t - 0.8) / 0.2
+          b = 0
+        }
+
+        colors.push(r, g, b)
+      })
+
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
+      geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
+
+      const material = new THREE.LineBasicMaterial({ vertexColors: true })
+      const line = new THREE.Line(geometry, material)
+
+      scene.add(line)
+    }
+
     function drawColorSpaceModel() {
       console.log('Drawing sensitivity view')
       // Draw 3D axes
       const axesHelper = new THREE.AxesHelper(5)
-      axesHelper.material.linewidth = 3 // Increase line width for better visibility
+      axesHelper.material.linewidth = 5 // Increase line width for better visibility
+      axesHelper.setColors(0x00ff00, 0x0000ff, 0xff0000) // Set colors: x-green, y-blue, z-red
       scene.add(axesHelper)
 
       // Add labels for axes
-      const axisLabels = ['X', 'Y', 'Z']
+      const axisLabels = ['Green', 'Blue', 'Red']
       const positions = [
         new THREE.Vector3(5.2, 0, 0),
         new THREE.Vector3(0, 5.2, 0),
@@ -116,7 +180,6 @@ export default {
     }
 
     function animate() {
-      console.log('Animating')
       requestAnimationFrame(animate)
       controls.update() // Update controls in the animation loop
       renderer.render(scene, camera)
