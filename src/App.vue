@@ -13,9 +13,12 @@ import MyIcon from './components/icons/IconColorSure.vue'
       <HelloWorld msg="Color Theory" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/color-theory">Color Theory</RouterLink>
-        <RouterLink to="/color-sensitivity">Color Sensitivity</RouterLink>
+        <ul>
+          <li><RouterLink to="/">Home</RouterLink></li>
+          <li><RouterLink to="/color-theory">Color Theory</RouterLink></li>
+          <li><RouterLink to="/color-sensitivity">Color Sensitivity</RouterLink></li>
+          <li><RouterLink to="/color-model">Color Model</RouterLink></li>
+        </ul>
       </nav>
     </div>
   </header>
