@@ -415,3 +415,2660 @@ export const wavelengthData = {
     b: 0.0000001
   }
 }
+
+// data from http://www.cvrl.org/cones.htm
+// 2-deg fundamentals based on the Stiles & Burch 10-deg CMFs (adjusted to 2-deg)
+export const coneData = {
+  Root: {
+    Records: {
+      Record: [
+        {
+          Field1: 390,
+          Field2: 0.000415003,
+          Field3: 0.000368349,
+          Field4: 0.00954729
+        },
+        {
+          Field1: 391,
+          Field2: 0.00050265,
+          Field3: 0.000448015,
+          Field4: 0.0114794
+        },
+        {
+          Field1: 392,
+          Field2: 0.000607367,
+          Field3: 0.000543965,
+          Field4: 0.0137986
+        },
+        {
+          Field1: 393,
+          Field2: 0.00073185,
+          Field3: 0.000658983,
+          Field4: 0.0165746
+        },
+        {
+          Field1: 394,
+          Field2: 0.000879012,
+          Field3: 0.000796121,
+          Field4: 0.0198869
+        },
+        {
+          Field1: 395,
+          Field2: 0.00105192,
+          Field3: 0.000958658,
+          Field4: 0.023825
+        },
+        {
+          Field1: 396,
+          Field2: 0.00125373,
+          Field3: 0.00115002,
+          Field4: 0.0284877
+        },
+        {
+          Field1: 397,
+          Field2: 0.00148756,
+          Field3: 0.00137367,
+          Field4: 0.0339832
+        },
+        {
+          Field1: 398,
+          Field2: 0.00175633,
+          Field3: 0.00163296,
+          Field4: 0.0404274
+        },
+        {
+          Field1: 399,
+          Field2: 0.00206261,
+          Field3: 0.00193089,
+          Field4: 0.0479417
+        },
+        {
+          Field1: 400,
+          Field2: 0.00240836,
+          Field3: 0.00226991,
+          Field4: 0.0566498
+        },
+        {
+          Field1: 401,
+          Field2: 0.00279522,
+          Field3: 0.0026521,
+          Field4: 0.0666757
+        },
+        {
+          Field1: 402,
+          Field2: 0.0032264,
+          Field3: 0.0030811,
+          Field4: 0.0781479
+        },
+        {
+          Field1: 403,
+          Field2: 0.00370617,
+          Field3: 0.00356156,
+          Field4: 0.0911925
+        },
+        {
+          Field1: 404,
+          Field2: 0.00423972,
+          Field3: 0.004099,
+          Field4: 0.105926
+        },
+        {
+          Field1: 405,
+          Field2: 0.00483339,
+          Field3: 0.0047001,
+          Field4: 0.122451
+        },
+        {
+          Field1: 406,
+          Field2: 0.00549335,
+          Field3: 0.00537186,
+          Field4: 0.140844
+        },
+        {
+          Field1: 407,
+          Field2: 0.00621933,
+          Field3: 0.00611757,
+          Field4: 0.16114
+        },
+        {
+          Field1: 408,
+          Field2: 0.00700631,
+          Field3: 0.00693795,
+          Field4: 0.183325
+        },
+        {
+          Field1: 409,
+          Field2: 0.00784503,
+          Field3: 0.00783144,
+          Field4: 0.207327
+        },
+        {
+          Field1: 410,
+          Field2: 0.00872127,
+          Field3: 0.00879369,
+          Field4: 0.233008
+        },
+        {
+          Field1: 411,
+          Field2: 0.00961879,
+          Field3: 0.00981865,
+          Field4: 0.260183
+        },
+        {
+          Field1: 412,
+          Field2: 0.0105324,
+          Field3: 0.0109044,
+          Field4: 0.288723
+        },
+        {
+          Field1: 413,
+          Field2: 0.011462,
+          Field3: 0.0120509,
+          Field4: 0.318512
+        },
+        {
+          Field1: 414,
+          Field2: 0.0124105,
+          Field3: 0.0132582,
+          Field4: 0.349431
+        },
+        {
+          Field1: 415,
+          Field2: 0.0133837,
+          Field3: 0.0145277,
+          Field4: 0.381363
+        },
+        {
+          Field1: 416,
+          Field2: 0.014387,
+          Field3: 0.01586,
+          Field4: 0.414141
+        },
+        {
+          Field1: 417,
+          Field2: 0.0154116,
+          Field3: 0.0172496,
+          Field4: 0.44735
+        },
+        {
+          Field1: 418,
+          Field2: 0.0164424,
+          Field3: 0.0186878,
+          Field4: 0.480439
+        },
+        {
+          Field1: 419,
+          Field2: 0.0174614,
+          Field3: 0.0201638,
+          Field4: 0.512767
+        },
+        {
+          Field1: 420,
+          Field2: 0.018448,
+          Field3: 0.0216649,
+          Field4: 0.543618
+        },
+        {
+          Field1: 421,
+          Field2: 0.0193852,
+          Field3: 0.0231801,
+          Field4: 0.572399
+        },
+        {
+          Field1: 422,
+          Field2: 0.0202811,
+          Field3: 0.0247139,
+          Field4: 0.599284
+        },
+        {
+          Field1: 423,
+          Field2: 0.0211545,
+          Field3: 0.0262785,
+          Field4: 0.624786
+        },
+        {
+          Field1: 424,
+          Field2: 0.0220286,
+          Field3: 0.0278905,
+          Field4: 0.649576
+        },
+        {
+          Field1: 425,
+          Field2: 0.0229317,
+          Field3: 0.0295714,
+          Field4: 0.674474
+        },
+        {
+          Field1: 426,
+          Field2: 0.0238896,
+          Field3: 0.0313438,
+          Field4: 0.700186
+        },
+        {
+          Field1: 427,
+          Field2: 0.0249026,
+          Field3: 0.0332151,
+          Field4: 0.72646
+        },
+        {
+          Field1: 428,
+          Field2: 0.0259631,
+          Field3: 0.0351889,
+          Field4: 0.752726
+        },
+        {
+          Field1: 429,
+          Field2: 0.0270619,
+          Field3: 0.0372683,
+          Field4: 0.778333
+        },
+        {
+          Field1: 430,
+          Field2: 0.0281877,
+          Field3: 0.0394566,
+          Field4: 0.802555
+        },
+        {
+          Field1: 431,
+          Field2: 0.0293303,
+          Field3: 0.0417546,
+          Field4: 0.824818
+        },
+        {
+          Field1: 432,
+          Field2: 0.0304898,
+          Field3: 0.0441544,
+          Field4: 0.845422
+        },
+        {
+          Field1: 433,
+          Field2: 0.0316694,
+          Field3: 0.0466432,
+          Field4: 0.864961
+        },
+        {
+          Field1: 434,
+          Field2: 0.0328731,
+          Field3: 0.049205,
+          Field4: 0.8841
+        },
+        {
+          Field1: 435,
+          Field2: 0.0341054,
+          Field3: 0.0518199,
+          Field4: 0.903573
+        },
+        {
+          Field1: 436,
+          Field2: 0.035367,
+          Field3: 0.0544645,
+          Field4: 0.923844
+        },
+        {
+          Field1: 437,
+          Field2: 0.03664,
+          Field3: 0.0571131,
+          Field4: 0.944055
+        },
+        {
+          Field1: 438,
+          Field2: 0.0378988,
+          Field3: 0.0597369,
+          Field4: 0.96292
+        },
+        {
+          Field1: 439,
+          Field2: 0.0391148,
+          Field3: 0.0623038,
+          Field4: 0.979057
+        },
+        {
+          Field1: 440,
+          Field2: 0.0402563,
+          Field3: 0.0647782,
+          Field4: 0.99102
+        },
+        {
+          Field1: 441,
+          Field2: 0.0412989,
+          Field3: 0.0671329,
+          Field4: 0.997765
+        },
+        {
+          Field1: 442,
+          Field2: 0.0422582,
+          Field3: 0.0693844,
+          Field4: 0.999982
+        },
+        {
+          Field1: 443,
+          Field2: 0.0431627,
+          Field3: 0.0715658,
+          Field4: 0.998861
+        },
+        {
+          Field1: 444,
+          Field2: 0.0440444,
+          Field3: 0.0737164,
+          Field4: 0.995628
+        },
+        {
+          Field1: 445,
+          Field2: 0.044938,
+          Field3: 0.0758812,
+          Field4: 0.991515
+        },
+        {
+          Field1: 446,
+          Field2: 0.0458729,
+          Field3: 0.078098,
+          Field4: 0.987377
+        },
+        {
+          Field1: 447,
+          Field2: 0.0468459,
+          Field3: 0.0803538,
+          Field4: 0.982619
+        },
+        {
+          Field1: 448,
+          Field2: 0.0478446,
+          Field3: 0.0826198,
+          Field4: 0.976301
+        },
+        {
+          Field1: 449,
+          Field2: 0.0488555,
+          Field3: 0.0848644,
+          Field4: 0.967513
+        },
+        {
+          Field1: 450,
+          Field2: 0.0498639,
+          Field3: 0.0870524,
+          Field4: 0.955393
+        },
+        {
+          Field1: 451,
+          Field2: 0.0508618,
+          Field3: 0.089164,
+          Field4: 0.939499
+        },
+        {
+          Field1: 452,
+          Field2: 0.0518731,
+          Field3: 0.0912523,
+          Field4: 0.920807
+        },
+        {
+          Field1: 453,
+          Field2: 0.0529317,
+          Field3: 0.093395,
+          Field4: 0.900592
+        },
+        {
+          Field1: 454,
+          Field2: 0.0540746,
+          Field3: 0.0956775,
+          Field4: 0.88004
+        },
+        {
+          Field1: 455,
+          Field2: 0.0553418,
+          Field3: 0.0981934,
+          Field4: 0.86024
+        },
+        {
+          Field1: 456,
+          Field2: 0.0567734,
+          Field3: 0.101031,
+          Field4: 0.842031
+        },
+        {
+          Field1: 457,
+          Field2: 0.0583973,
+          Field3: 0.104229,
+          Field4: 0.825572
+        },
+        {
+          Field1: 458,
+          Field2: 0.0602409,
+          Field3: 0.107814,
+          Field4: 0.81086
+        },
+        {
+          Field1: 459,
+          Field2: 0.0623353,
+          Field3: 0.111817,
+          Field4: 0.797902
+        },
+        {
+          Field1: 460,
+          Field2: 0.0647164,
+          Field3: 0.116272,
+          Field4: 0.786704
+        },
+        {
+          Field1: 461,
+          Field2: 0.0674131,
+          Field3: 0.121204,
+          Field4: 0.777119
+        },
+        {
+          Field1: 462,
+          Field2: 0.070404,
+          Field3: 0.126573,
+          Field4: 0.768365
+        },
+        {
+          Field1: 463,
+          Field2: 0.0736489,
+          Field3: 0.132311,
+          Field4: 0.759538
+        },
+        {
+          Field1: 464,
+          Field2: 0.0770978,
+          Field3: 0.138334,
+          Field4: 0.749777
+        },
+        {
+          Field1: 465,
+          Field2: 0.0806894,
+          Field3: 0.144541,
+          Field4: 0.738268
+        },
+        {
+          Field1: 466,
+          Field2: 0.0843613,
+          Field3: 0.150828,
+          Field4: 0.724389
+        },
+        {
+          Field1: 467,
+          Field2: 0.0880904,
+          Field3: 0.157146,
+          Field4: 0.708113
+        },
+        {
+          Field1: 468,
+          Field2: 0.091863,
+          Field3: 0.163457,
+          Field4: 0.689572
+        },
+        {
+          Field1: 469,
+          Field2: 0.0956637,
+          Field3: 0.169721,
+          Field4: 0.668927
+        },
+        {
+          Field1: 470,
+          Field2: 0.0994755,
+          Field3: 0.175893,
+          Field4: 0.646359
+        },
+        {
+          Field1: 471,
+          Field2: 0.103286,
+          Field3: 0.181938,
+          Field4: 0.622112
+        },
+        {
+          Field1: 472,
+          Field2: 0.107103,
+          Field3: 0.187872,
+          Field4: 0.596591
+        },
+        {
+          Field1: 473,
+          Field2: 0.110947,
+          Field3: 0.193731,
+          Field4: 0.570216
+        },
+        {
+          Field1: 474,
+          Field2: 0.114838,
+          Field3: 0.199557,
+          Field4: 0.543373
+        },
+        {
+          Field1: 475,
+          Field2: 0.118802,
+          Field3: 0.205398,
+          Field4: 0.516411
+        },
+        {
+          Field1: 476,
+          Field2: 0.122863,
+          Field3: 0.211302,
+          Field4: 0.489647
+        },
+        {
+          Field1: 477,
+          Field2: 0.127026,
+          Field3: 0.217283,
+          Field4: 0.463406
+        },
+        {
+          Field1: 478,
+          Field2: 0.131293,
+          Field3: 0.223347,
+          Field4: 0.437965
+        },
+        {
+          Field1: 479,
+          Field2: 0.135666,
+          Field3: 0.229501,
+          Field4: 0.413549
+        },
+        {
+          Field1: 480,
+          Field2: 0.140145,
+          Field3: 0.235754,
+          Field4: 0.390333
+        },
+        {
+          Field1: 481,
+          Field2: 0.144731,
+          Field3: 0.242108,
+          Field4: 0.368394
+        },
+        {
+          Field1: 482,
+          Field2: 0.149415,
+          Field3: 0.248545,
+          Field4: 0.347582
+        },
+        {
+          Field1: 483,
+          Field2: 0.154189,
+          Field3: 0.255037,
+          Field4: 0.327724
+        },
+        {
+          Field1: 484,
+          Field2: 0.159038,
+          Field3: 0.261554,
+          Field4: 0.308676
+        },
+        {
+          Field1: 485,
+          Field2: 0.163952,
+          Field3: 0.268063,
+          Field4: 0.290322
+        },
+        {
+          Field1: 486,
+          Field2: 0.168932,
+          Field3: 0.274561,
+          Field4: 0.272626
+        },
+        {
+          Field1: 487,
+          Field2: 0.174063,
+          Field3: 0.28118,
+          Field4: 0.255772
+        },
+        {
+          Field1: 488,
+          Field2: 0.179457,
+          Field3: 0.288097,
+          Field4: 0.239945
+        },
+        {
+          Field1: 489,
+          Field2: 0.185241,
+          Field3: 0.295508,
+          Field4: 0.22528
+        },
+        {
+          Field1: 490,
+          Field2: 0.191556,
+          Field3: 0.30363,
+          Field4: 0.211867
+        },
+        {
+          Field1: 491,
+          Field2: 0.198532,
+          Field3: 0.312649,
+          Field4: 0.199719
+        },
+        {
+          Field1: 492,
+          Field2: 0.206182,
+          Field3: 0.322565,
+          Field4: 0.188674
+        },
+        {
+          Field1: 493,
+          Field2: 0.214485,
+          Field3: 0.333319,
+          Field4: 0.178557
+        },
+        {
+          Field1: 494,
+          Field2: 0.223411,
+          Field3: 0.344844,
+          Field4: 0.169217
+        },
+        {
+          Field1: 495,
+          Field2: 0.232926,
+          Field3: 0.357061,
+          Field4: 0.160526
+        },
+        {
+          Field1: 496,
+          Field2: 0.242992,
+          Field3: 0.369895,
+          Field4: 0.152368
+        },
+        {
+          Field1: 497,
+          Field2: 0.253616,
+          Field3: 0.383355,
+          Field4: 0.14462
+        },
+        {
+          Field1: 498,
+          Field2: 0.26481,
+          Field3: 0.397467,
+          Field4: 0.137173
+        },
+        {
+          Field1: 499,
+          Field2: 0.276587,
+          Field3: 0.41226,
+          Field4: 0.129937
+        },
+        {
+          Field1: 500,
+          Field2: 0.288959,
+          Field3: 0.427764,
+          Field4: 0.122839
+        },
+        {
+          Field1: 501,
+          Field2: 0.301934,
+          Field3: 0.444001,
+          Field4: 0.115834
+        },
+        {
+          Field1: 502,
+          Field2: 0.315508,
+          Field3: 0.460947,
+          Field4: 0.108922
+        },
+        {
+          Field1: 503,
+          Field2: 0.329673,
+          Field3: 0.478562,
+          Field4: 0.102118
+        },
+        {
+          Field1: 504,
+          Field2: 0.344416,
+          Field3: 0.496795,
+          Field4: 0.0954374
+        },
+        {
+          Field1: 505,
+          Field2: 0.359716,
+          Field3: 0.515587,
+          Field4: 0.0888965
+        },
+        {
+          Field1: 506,
+          Field2: 0.37555,
+          Field3: 0.534868,
+          Field4: 0.0825343
+        },
+        {
+          Field1: 507,
+          Field2: 0.391895,
+          Field3: 0.554575,
+          Field4: 0.0764613
+        },
+        {
+          Field1: 508,
+          Field2: 0.408722,
+          Field3: 0.57464,
+          Field4: 0.0707769
+        },
+        {
+          Field1: 509,
+          Field2: 0.425998,
+          Field3: 0.594984,
+          Field4: 0.0655491
+        },
+        {
+          Field1: 510,
+          Field2: 0.443683,
+          Field3: 0.61552,
+          Field4: 0.060821
+        },
+        {
+          Field1: 511,
+          Field2: 0.461731,
+          Field3: 0.636162,
+          Field4: 0.0565919
+        },
+        {
+          Field1: 512,
+          Field2: 0.480094,
+          Field3: 0.656872,
+          Field4: 0.0527659
+        },
+        {
+          Field1: 513,
+          Field2: 0.498717,
+          Field3: 0.677624,
+          Field4: 0.049244
+        },
+        {
+          Field1: 514,
+          Field2: 0.517539,
+          Field3: 0.698393,
+          Field4: 0.045947
+        },
+        {
+          Field1: 515,
+          Field2: 0.536494,
+          Field3: 0.719154,
+          Field4: 0.0428123
+        },
+        {
+          Field1: 516,
+          Field2: 0.555493,
+          Field3: 0.739844,
+          Field4: 0.0398014
+        },
+        {
+          Field1: 517,
+          Field2: 0.574386,
+          Field3: 0.760235,
+          Field4: 0.0369227
+        },
+        {
+          Field1: 518,
+          Field2: 0.592995,
+          Field3: 0.780039,
+          Field4: 0.0341909
+        },
+        {
+          Field1: 519,
+          Field2: 0.611124,
+          Field3: 0.798941,
+          Field4: 0.0316158
+        },
+        {
+          Field1: 520,
+          Field2: 0.628561,
+          Field3: 0.81661,
+          Field4: 0.0292033
+        },
+        {
+          Field1: 521,
+          Field2: 0.645139,
+          Field3: 0.832783,
+          Field4: 0.0269536
+        },
+        {
+          Field1: 522,
+          Field2: 0.660907,
+          Field3: 0.84755,
+          Field4: 0.0248575
+        },
+        {
+          Field1: 523,
+          Field2: 0.675993,
+          Field3: 0.861113,
+          Field4: 0.0229047
+        },
+        {
+          Field1: 524,
+          Field2: 0.690542,
+          Field3: 0.873698,
+          Field4: 0.0210855
+        },
+        {
+          Field1: 525,
+          Field2: 0.70472,
+          Field3: 0.88555,
+          Field4: 0.0193912
+        },
+        {
+          Field1: 526,
+          Field2: 0.718662,
+          Field3: 0.896873,
+          Field4: 0.0178145
+        },
+        {
+          Field1: 527,
+          Field2: 0.732323,
+          Field3: 0.907638,
+          Field4: 0.0163514
+        },
+        {
+          Field1: 528,
+          Field2: 0.745606,
+          Field3: 0.917757,
+          Field4: 0.014998
+        },
+        {
+          Field1: 529,
+          Field2: 0.75841,
+          Field3: 0.927137,
+          Field4: 0.0137497
+        },
+        {
+          Field1: 530,
+          Field2: 0.77063,
+          Field3: 0.935687,
+          Field4: 0.0126013
+        },
+        {
+          Field1: 531,
+          Field2: 0.782208,
+          Field3: 0.943362,
+          Field4: 0.0115466
+        },
+        {
+          Field1: 532,
+          Field2: 0.79329,
+          Field3: 0.950309,
+          Field4: 0.0105766
+        },
+        {
+          Field1: 533,
+          Field2: 0.804084,
+          Field3: 0.956733,
+          Field4: 0.00968268
+        },
+        {
+          Field1: 534,
+          Field2: 0.814813,
+          Field3: 0.962844,
+          Field4: 0.00885746
+        },
+        {
+          Field1: 535,
+          Field2: 0.825711,
+          Field3: 0.968858,
+          Field4: 0.00809453
+        },
+        {
+          Field1: 536,
+          Field2: 0.836943,
+          Field3: 0.974919,
+          Field4: 0.0073889
+        },
+        {
+          Field1: 537,
+          Field2: 0.848349,
+          Field3: 0.98085,
+          Field4: 0.00673799
+        },
+        {
+          Field1: 538,
+          Field2: 0.859676,
+          Field3: 0.986388,
+          Field4: 0.00613947
+        },
+        {
+          Field1: 539,
+          Field2: 0.870656,
+          Field3: 0.991267,
+          Field4: 0.00559073
+        },
+        {
+          Field1: 540,
+          Field2: 0.881011,
+          Field3: 0.995217,
+          Field4: 0.005089
+        },
+        {
+          Field1: 541,
+          Field2: 0.890496,
+          Field3: 0.998007,
+          Field4: 0.0046312
+        },
+        {
+          Field1: 542,
+          Field2: 0.899052,
+          Field3: 0.999595,
+          Field4: 0.00421366
+        },
+        {
+          Field1: 543,
+          Field2: 0.906669,
+          Field3: 0.999982,
+          Field4: 0.00383286
+        },
+        {
+          Field1: 544,
+          Field2: 0.913341,
+          Field3: 0.999177,
+          Field4: 0.00348559
+        },
+        {
+          Field1: 545,
+          Field2: 0.919067,
+          Field3: 0.997193,
+          Field4: 0.00316893
+        },
+        {
+          Field1: 546,
+          Field2: 0.923898,
+          Field3: 0.994102,
+          Field4: 0.00288021
+        },
+        {
+          Field1: 547,
+          Field2: 0.928099,
+          Field3: 0.990204,
+          Field4: 0.00261698
+        },
+        {
+          Field1: 548,
+          Field2: 0.931995,
+          Field3: 0.985855,
+          Field4: 0.00237701
+        },
+        {
+          Field1: 549,
+          Field2: 0.935916,
+          Field3: 0.981404,
+          Field4: 0.00215829
+        },
+        {
+          Field1: 550,
+          Field2: 0.940198,
+          Field3: 0.977193,
+          Field4: 0.00195896
+        },
+        {
+          Field1: 551,
+          Field2: 0.945076,
+          Field3: 0.973441,
+          Field4: 0.00177737
+        },
+        {
+          Field1: 552,
+          Field2: 0.950367,
+          Field3: 0.969881,
+          Field4: 0.00161218
+        },
+        {
+          Field1: 553,
+          Field2: 0.955775,
+          Field3: 0.966133,
+          Field4: 0.00146215
+        },
+        {
+          Field1: 554,
+          Field2: 0.961,
+          Field3: 0.961823,
+          Field4: 0.00132606
+        },
+        {
+          Field1: 555,
+          Field2: 0.965733,
+          Field3: 0.956583,
+          Field4: 0.00120277
+        },
+        {
+          Field1: 556,
+          Field2: 0.969744,
+          Field3: 0.950167,
+          Field4: 0.00109118
+        },
+        {
+          Field1: 557,
+          Field2: 0.973133,
+          Field3: 0.942773,
+          Field4: 0.000990135
+        },
+        {
+          Field1: 558,
+          Field2: 0.976086,
+          Field3: 0.934709,
+          Field4: 0.000898564
+        },
+        {
+          Field1: 559,
+          Field2: 0.978793,
+          Field3: 0.926271,
+          Field4: 0.000815524
+        },
+        {
+          Field1: 560,
+          Field2: 0.981445,
+          Field3: 0.91775,
+          Field4: 0.000740174
+        },
+        {
+          Field1: 561,
+          Field2: 0.984186,
+          Field3: 0.909339,
+          Field4: 0.000671772
+        },
+        {
+          Field1: 562,
+          Field2: 0.986965,
+          Field3: 0.900895,
+          Field4: 0.000609693
+        },
+        {
+          Field1: 563,
+          Field2: 0.989678,
+          Field3: 0.892197,
+          Field4: 0.000553372
+        },
+        {
+          Field1: 564,
+          Field2: 0.99222,
+          Field3: 0.883035,
+          Field4: 0.000502292
+        },
+        {
+          Field1: 565,
+          Field2: 0.994486,
+          Field3: 0.873205,
+          Field4: 0.000455979
+        },
+        {
+          Field1: 566,
+          Field2: 0.996386,
+          Field3: 0.862565,
+          Field4: 0.000413997
+        },
+        {
+          Field1: 567,
+          Field2: 0.997895,
+          Field3: 0.851173,
+          Field4: 0.00037594
+        },
+        {
+          Field1: 568,
+          Field2: 0.999004,
+          Field3: 0.839132,
+          Field4: 0.000341439
+        },
+        {
+          Field1: 569,
+          Field2: 0.999706,
+          Field3: 0.826545,
+          Field4: 0.00031016
+        },
+        {
+          Field1: 570,
+          Field2: 0.999993,
+          Field3: 0.813509,
+          Field4: 0.0002818
+        },
+        {
+          Field1: 571,
+          Field2: 0.999837,
+          Field3: 0.800082,
+          Field4: 0.000256084
+        },
+        {
+          Field1: 572,
+          Field2: 0.999123,
+          Field3: 0.786166,
+          Field4: 0.000232764
+        },
+        {
+          Field1: 573,
+          Field2: 0.997719,
+          Field3: 0.771635,
+          Field4: 0.000211616
+        },
+        {
+          Field1: 574,
+          Field2: 0.995491,
+          Field3: 0.756376,
+          Field4: 0.000192436
+        },
+        {
+          Field1: 575,
+          Field2: 0.99231,
+          Field3: 0.740291,
+          Field4: 0.000175039
+        },
+        {
+          Field1: 576,
+          Field2: 0.988146,
+          Field3: 0.723369,
+          Field4: 0.000159257
+        },
+        {
+          Field1: 577,
+          Field2: 0.983345,
+          Field3: 0.70589,
+          Field4: 0.00014494
+        },
+        {
+          Field1: 578,
+          Field2: 0.978342,
+          Field3: 0.688184,
+          Field4: 0.000131948
+        },
+        {
+          Field1: 579,
+          Field2: 0.973564,
+          Field3: 0.670554,
+          Field4: 0.000120157
+        },
+        {
+          Field1: 580,
+          Field2: 0.969429,
+          Field3: 0.653274,
+          Field4: 0.000109454
+        },
+        {
+          Field1: 581,
+          Field2: 0.966211,
+          Field3: 0.636524,
+          Field4: 0.0000997367
+        },
+        {
+          Field1: 582,
+          Field2: 0.96363,
+          Field3: 0.620217,
+          Field4: 0.0000909125
+        },
+        {
+          Field1: 583,
+          Field2: 0.961273,
+          Field3: 0.604211,
+          Field4: 0.0000828976
+        },
+        {
+          Field1: 584,
+          Field2: 0.958732,
+          Field3: 0.588375,
+          Field4: 0.000075616
+        },
+        {
+          Field1: 585,
+          Field2: 0.955602,
+          Field3: 0.572597,
+          Field4: 0.0000689991
+        },
+        {
+          Field1: 586,
+          Field2: 0.951569,
+          Field3: 0.556783,
+          Field4: 0.0000629846
+        },
+        {
+          Field1: 587,
+          Field2: 0.946654,
+          Field3: 0.540896,
+          Field4: 0.0000575163
+        },
+        {
+          Field1: 588,
+          Field2: 0.940962,
+          Field3: 0.524912,
+          Field4: 0.0000525432
+        },
+        {
+          Field1: 589,
+          Field2: 0.9346,
+          Field3: 0.508817,
+          Field4: 0.0000480192
+        },
+        {
+          Field1: 590,
+          Field2: 0.927673,
+          Field3: 0.492599,
+          Field4: 0.0000439024
+        },
+        {
+          Field1: 591,
+          Field2: 0.920264,
+          Field3: 0.476268,
+          Field4: 0.0000401551
+        },
+        {
+          Field1: 592,
+          Field2: 0.912391,
+          Field3: 0.459893,
+          Field4: 0.0000367431
+        },
+        {
+          Field1: 593,
+          Field2: 0.90405,
+          Field3: 0.443551,
+          Field4: 0.0000336353
+        },
+        {
+          Field1: 594,
+          Field2: 0.895243,
+          Field3: 0.427314,
+          Field4: 0.0000308037
+        },
+        {
+          Field1: 595,
+          Field2: 0.885969,
+          Field3: 0.411246,
+          Field4: 0.0000282228
+        },
+        {
+          Field1: 596,
+          Field2: 0.876242,
+          Field3: 0.395396,
+          Field4: 0.0000258697
+        },
+        {
+          Field1: 597,
+          Field2: 0.866117,
+          Field3: 0.379782,
+          Field4: 0.0000237235
+        },
+        {
+          Field1: 598,
+          Field2: 0.855658,
+          Field3: 0.36441,
+          Field4: 0.0000217653
+        },
+        {
+          Field1: 599,
+          Field2: 0.844926,
+          Field3: 0.349289,
+          Field4: 0.0000199779
+        },
+        {
+          Field1: 600,
+          Field2: 0.833982,
+          Field3: 0.334429,
+          Field4: 0.0000183459
+        },
+        {
+          Field1: 601,
+          Field2: 0.822859,
+          Field3: 0.319843,
+          Field4: 0.0000168551
+        },
+        {
+          Field1: 602,
+          Field2: 0.811491,
+          Field3: 0.305564,
+          Field4: 0.0000154929
+        },
+        {
+          Field1: 603,
+          Field2: 0.799794,
+          Field3: 0.291625,
+          Field4: 0.0000142476
+        },
+        {
+          Field1: 604,
+          Field2: 0.787689,
+          Field3: 0.278053,
+          Field4: 0.0000131087
+        },
+        {
+          Field1: 605,
+          Field2: 0.775103,
+          Field3: 0.264872,
+          Field4: 0.0000120667
+        },
+        {
+          Field1: 606,
+          Field2: 0.761996,
+          Field3: 0.252099,
+          Field4: 0.0000111131
+        },
+        {
+          Field1: 607,
+          Field2: 0.748425,
+          Field3: 0.239747,
+          Field4: 0.0000102399
+        },
+        {
+          Field1: 608,
+          Field2: 0.73447,
+          Field3: 0.227822,
+          Field4: 0.00000943999
+        },
+        {
+          Field1: 609,
+          Field2: 0.720208,
+          Field3: 0.21633,
+          Field4: 0.00000870695
+        },
+        {
+          Field1: 610,
+          Field2: 0.705713,
+          Field3: 0.205273,
+          Field4: 0.00000803488
+        },
+        {
+          Field1: 611,
+          Field2: 0.691044,
+          Field3: 0.19465,
+          Field4: 0.00000741844
+        },
+        {
+          Field1: 612,
+          Field2: 0.676212,
+          Field3: 0.184448,
+          Field4: 0.00000685279
+        },
+        {
+          Field1: 613,
+          Field2: 0.66122,
+          Field3: 0.174654,
+          Field4: 0.00000633352
+        },
+        {
+          Field1: 614,
+          Field2: 0.646072,
+          Field3: 0.165256,
+          Field4: 0.00000585662
+        },
+        {
+          Field1: 615,
+          Field2: 0.630773,
+          Field3: 0.156243,
+          Field4: 0.00000541843
+        },
+        {
+          Field1: 616,
+          Field2: 0.615349,
+          Field3: 0.147602,
+          Field4: ''
+        },
+        {
+          Field1: 617,
+          Field2: 0.599888,
+          Field3: 0.139329,
+          Field4: ''
+        },
+        {
+          Field1: 618,
+          Field2: 0.584489,
+          Field3: 0.131416,
+          Field4: ''
+        },
+        {
+          Field1: 619,
+          Field2: 0.56924,
+          Field3: 0.123856,
+          Field4: ''
+        },
+        {
+          Field1: 620,
+          Field2: 0.554224,
+          Field3: 0.116641,
+          Field4: ''
+        },
+        {
+          Field1: 621,
+          Field2: 0.539469,
+          Field3: 0.109766,
+          Field4: ''
+        },
+        {
+          Field1: 622,
+          Field2: 0.524827,
+          Field3: 0.103226,
+          Field4: ''
+        },
+        {
+          Field1: 623,
+          Field2: 0.510124,
+          Field3: 0.0970205,
+          Field4: ''
+        },
+        {
+          Field1: 624,
+          Field2: 0.495206,
+          Field3: 0.091143,
+          Field4: ''
+        },
+        {
+          Field1: 625,
+          Field2: 0.479941,
+          Field3: 0.0855872,
+          Field4: ''
+        },
+        {
+          Field1: 626,
+          Field2: 0.46427,
+          Field3: 0.0803428,
+          Field4: ''
+        },
+        {
+          Field1: 627,
+          Field2: 0.448338,
+          Field3: 0.0753913,
+          Field4: ''
+        },
+        {
+          Field1: 628,
+          Field2: 0.432329,
+          Field3: 0.0707136,
+          Field4: ''
+        },
+        {
+          Field1: 629,
+          Field2: 0.416406,
+          Field3: 0.0662924,
+          Field4: ''
+        },
+        {
+          Field1: 630,
+          Field2: 0.400711,
+          Field3: 0.062112,
+          Field4: ''
+        },
+        {
+          Field1: 631,
+          Field2: 0.385355,
+          Field3: 0.0581595,
+          Field4: ''
+        },
+        {
+          Field1: 632,
+          Field2: 0.370377,
+          Field3: 0.0544276,
+          Field4: ''
+        },
+        {
+          Field1: 633,
+          Field2: 0.355793,
+          Field3: 0.0509098,
+          Field4: ''
+        },
+        {
+          Field1: 634,
+          Field2: 0.341618,
+          Field3: 0.0475991,
+          Field4: ''
+        },
+        {
+          Field1: 635,
+          Field2: 0.327864,
+          Field3: 0.0444879,
+          Field4: ''
+        },
+        {
+          Field1: 636,
+          Field2: 0.314541,
+          Field3: 0.0415659,
+          Field4: ''
+        },
+        {
+          Field1: 637,
+          Field2: 0.301662,
+          Field3: 0.0388152,
+          Field4: ''
+        },
+        {
+          Field1: 638,
+          Field2: 0.289239,
+          Field3: 0.0362181,
+          Field4: ''
+        },
+        {
+          Field1: 639,
+          Field2: 0.277278,
+          Field3: 0.0337599,
+          Field4: ''
+        },
+        {
+          Field1: 640,
+          Field2: 0.265784,
+          Field3: 0.0314282,
+          Field4: ''
+        },
+        {
+          Field1: 641,
+          Field2: 0.25474,
+          Field3: 0.0292176,
+          Field4: ''
+        },
+        {
+          Field1: 642,
+          Field2: 0.244054,
+          Field3: 0.0271403,
+          Field4: ''
+        },
+        {
+          Field1: 643,
+          Field2: 0.233634,
+          Field3: 0.0252084,
+          Field4: ''
+        },
+        {
+          Field1: 644,
+          Field2: 0.223399,
+          Field3: 0.0234286,
+          Field4: ''
+        },
+        {
+          Field1: 645,
+          Field2: 0.213284,
+          Field3: 0.0218037,
+          Field4: ''
+        },
+        {
+          Field1: 646,
+          Field2: 0.203257,
+          Field3: 0.0203285,
+          Field4: ''
+        },
+        {
+          Field1: 647,
+          Field2: 0.19337,
+          Field3: 0.0189779,
+          Field4: ''
+        },
+        {
+          Field1: 648,
+          Field2: 0.183688,
+          Field3: 0.0177272,
+          Field4: ''
+        },
+        {
+          Field1: 649,
+          Field2: 0.174263,
+          Field3: 0.016556,
+          Field4: ''
+        },
+        {
+          Field1: 650,
+          Field2: 0.165141,
+          Field3: 0.015448,
+          Field4: ''
+        },
+        {
+          Field1: 651,
+          Field2: 0.156354,
+          Field3: 0.0143924,
+          Field4: ''
+        },
+        {
+          Field1: 652,
+          Field2: 0.147916,
+          Field3: 0.0133896,
+          Field4: ''
+        },
+        {
+          Field1: 653,
+          Field2: 0.139834,
+          Field3: 0.0124414,
+          Field4: ''
+        },
+        {
+          Field1: 654,
+          Field2: 0.132111,
+          Field3: 0.0115488,
+          Field4: ''
+        },
+        {
+          Field1: 655,
+          Field2: 0.124749,
+          Field3: 0.010712,
+          Field4: ''
+        },
+        {
+          Field1: 656,
+          Field2: 0.117744,
+          Field3: 0.00992994,
+          Field4: ''
+        },
+        {
+          Field1: 657,
+          Field2: 0.111081,
+          Field3: 0.00920057,
+          Field4: ''
+        },
+        {
+          Field1: 658,
+          Field2: 0.104747,
+          Field3: 0.00852126,
+          Field4: ''
+        },
+        {
+          Field1: 659,
+          Field2: 0.0987277,
+          Field3: 0.00788945,
+          Field4: ''
+        },
+        {
+          Field1: 660,
+          Field2: 0.0930085,
+          Field3: 0.00730255,
+          Field4: ''
+        },
+        {
+          Field1: 661,
+          Field2: 0.0875769,
+          Field3: 0.0067582,
+          Field4: ''
+        },
+        {
+          Field1: 662,
+          Field2: 0.0824219,
+          Field3: 0.00625474,
+          Field4: ''
+        },
+        {
+          Field1: 663,
+          Field2: 0.0775328,
+          Field3: 0.00579045,
+          Field4: ''
+        },
+        {
+          Field1: 664,
+          Field2: 0.0728989,
+          Field3: 0.00536347,
+          Field4: ''
+        },
+        {
+          Field1: 665,
+          Field2: 0.06851,
+          Field3: 0.00497179,
+          Field4: ''
+        },
+        {
+          Field1: 666,
+          Field2: 0.0643554,
+          Field3: 0.004613,
+          Field4: ''
+        },
+        {
+          Field1: 667,
+          Field2: 0.0604242,
+          Field3: 0.00428339,
+          Field4: ''
+        },
+        {
+          Field1: 668,
+          Field2: 0.0567057,
+          Field3: 0.0039794,
+          Field4: ''
+        },
+        {
+          Field1: 669,
+          Field2: 0.0531896,
+          Field3: 0.00369803,
+          Field4: ''
+        },
+        {
+          Field1: 670,
+          Field2: 0.0498661,
+          Field3: 0.00343667,
+          Field4: ''
+        },
+        {
+          Field1: 671,
+          Field2: 0.0467258,
+          Field3: 0.00319326,
+          Field4: ''
+        },
+        {
+          Field1: 672,
+          Field2: 0.0437598,
+          Field3: 0.00296653,
+          Field4: ''
+        },
+        {
+          Field1: 673,
+          Field2: 0.0409594,
+          Field3: 0.00275543,
+          Field4: ''
+        },
+        {
+          Field1: 674,
+          Field2: 0.0383165,
+          Field3: 0.00255896,
+          Field4: ''
+        },
+        {
+          Field1: 675,
+          Field2: 0.0358233,
+          Field3: 0.00237617,
+          Field4: ''
+        },
+        {
+          Field1: 676,
+          Field2: 0.0334725,
+          Field3: 0.00220618,
+          Field4: ''
+        },
+        {
+          Field1: 677,
+          Field2: 0.0312583,
+          Field3: 0.00204809,
+          Field4: ''
+        },
+        {
+          Field1: 678,
+          Field2: 0.0291751,
+          Field3: 0.0019011,
+          Field4: ''
+        },
+        {
+          Field1: 679,
+          Field2: 0.0272173,
+          Field3: 0.00176442,
+          Field4: ''
+        },
+        {
+          Field1: 680,
+          Field2: 0.025379,
+          Field3: 0.00163734,
+          Field4: ''
+        },
+        {
+          Field1: 681,
+          Field2: 0.0236541,
+          Field3: 0.00151916,
+          Field4: ''
+        },
+        {
+          Field1: 682,
+          Field2: 0.0220336,
+          Field3: 0.00140913,
+          Field4: ''
+        },
+        {
+          Field1: 683,
+          Field2: 0.0205092,
+          Field3: 0.00130655,
+          Field4: ''
+        },
+        {
+          Field1: 684,
+          Field2: 0.0190735,
+          Field3: 0.00121078,
+          Field4: ''
+        },
+        {
+          Field1: 685,
+          Field2: 0.0177201,
+          Field3: 0.00112128,
+          Field4: ''
+        },
+        {
+          Field1: 686,
+          Field2: 0.0164451,
+          Field3: 0.00103766,
+          Field4: ''
+        },
+        {
+          Field1: 687,
+          Field2: 0.015251,
+          Field3: 0.000959892,
+          Field4: ''
+        },
+        {
+          Field1: 688,
+          Field2: 0.0141404,
+          Field3: 0.000887951,
+          Field4: ''
+        },
+        {
+          Field1: 689,
+          Field2: 0.0131137,
+          Field3: 0.000821729,
+          Field4: ''
+        },
+        {
+          Field1: 690,
+          Field2: 0.0121701,
+          Field3: 0.000761051,
+          Field4: ''
+        },
+        {
+          Field1: 691,
+          Field2: 0.0113063,
+          Field3: 0.000705623,
+          Field4: ''
+        },
+        {
+          Field1: 692,
+          Field2: 0.0105131,
+          Field3: 0.000654874,
+          Field4: ''
+        },
+        {
+          Field1: 693,
+          Field2: 0.00978127,
+          Field3: 0.00060824,
+          Field4: ''
+        },
+        {
+          Field1: 694,
+          Field2: 0.009103,
+          Field3: 0.00056524,
+          Field4: ''
+        },
+        {
+          Field1: 695,
+          Field2: 0.0084717,
+          Field3: 0.000525457,
+          Field4: ''
+        },
+        {
+          Field1: 696,
+          Field2: 0.00788227,
+          Field3: 0.00048855,
+          Field4: ''
+        },
+        {
+          Field1: 697,
+          Field2: 0.00733213,
+          Field3: 0.000454277,
+          Field4: ''
+        },
+        {
+          Field1: 698,
+          Field2: 0.00681928,
+          Field3: 0.000422436,
+          Field4: ''
+        },
+        {
+          Field1: 699,
+          Field2: 0.00634173,
+          Field3: 0.000392839,
+          Field4: ''
+        },
+        {
+          Field1: 700,
+          Field2: 0.00589749,
+          Field3: 0.000365317,
+          Field4: ''
+        },
+        {
+          Field1: 701,
+          Field2: 0.00548444,
+          Field3: 0.00033971,
+          Field4: ''
+        },
+        {
+          Field1: 702,
+          Field2: 0.00509978,
+          Field3: 0.000315856,
+          Field4: ''
+        },
+        {
+          Field1: 703,
+          Field2: 0.00474086,
+          Field3: 0.000293607,
+          Field4: ''
+        },
+        {
+          Field1: 704,
+          Field2: 0.00440538,
+          Field3: 0.000272834,
+          Field4: ''
+        },
+        {
+          Field1: 705,
+          Field2: 0.00409129,
+          Field3: 0.000253417,
+          Field4: ''
+        },
+        {
+          Field1: 706,
+          Field2: 0.00379703,
+          Field3: 0.000235265,
+          Field4: ''
+        },
+        {
+          Field1: 707,
+          Field2: 0.00352187,
+          Field3: 0.000218331,
+          Field4: ''
+        },
+        {
+          Field1: 708,
+          Field2: 0.0032652,
+          Field3: 0.000202574,
+          Field4: ''
+        },
+        {
+          Field1: 709,
+          Field2: 0.00302632,
+          Field3: 0.000187948,
+          Field4: ''
+        },
+        {
+          Field1: 710,
+          Field2: 0.00280447,
+          Field3: 0.000174402,
+          Field4: ''
+        },
+        {
+          Field1: 711,
+          Field2: 0.00259882,
+          Field3: 0.000161878,
+          Field4: ''
+        },
+        {
+          Field1: 712,
+          Field2: 0.00240849,
+          Field3: 0.000150305,
+          Field4: ''
+        },
+        {
+          Field1: 713,
+          Field2: 0.00223259,
+          Field3: 0.000139612,
+          Field4: ''
+        },
+        {
+          Field1: 714,
+          Field2: 0.00207024,
+          Field3: 0.000129734,
+          Field4: ''
+        },
+        {
+          Field1: 715,
+          Field2: 0.00192058,
+          Field3: 0.000120608,
+          Field4: ''
+        },
+        {
+          Field1: 716,
+          Field2: 0.00178269,
+          Field3: 0.000112176,
+          Field4: ''
+        },
+        {
+          Field1: 717,
+          Field2: 0.0016554,
+          Field3: 0.000104373,
+          Field4: ''
+        },
+        {
+          Field1: 718,
+          Field2: 0.00153762,
+          Field3: 0.0000971383,
+          Field4: ''
+        },
+        {
+          Field1: 719,
+          Field2: 0.00142839,
+          Field3: 0.0000904202,
+          Field4: ''
+        },
+        {
+          Field1: 720,
+          Field2: 0.00132687,
+          Field3: 0.0000841716,
+          Field4: ''
+        },
+        {
+          Field1: 721,
+          Field2: 0.00123238,
+          Field3: 0.0000783538,
+          Field4: ''
+        },
+        {
+          Field1: 722,
+          Field2: 0.00114456,
+          Field3: 0.0000729425,
+          Field4: ''
+        },
+        {
+          Field1: 723,
+          Field2: 0.00106308,
+          Field3: 0.0000679164,
+          Field4: ''
+        },
+        {
+          Field1: 724,
+          Field2: 0.000987592,
+          Field3: 0.0000632542,
+          Field4: ''
+        },
+        {
+          Field1: 725,
+          Field2: 0.000917777,
+          Field3: 0.0000589349,
+          Field4: ''
+        },
+        {
+          Field1: 726,
+          Field2: 0.000853264,
+          Field3: 0.000054936,
+          Field4: ''
+        },
+        {
+          Field1: 727,
+          Field2: 0.000793589,
+          Field3: 0.0000512291,
+          Field4: ''
+        },
+        {
+          Field1: 728,
+          Field2: 0.000738306,
+          Field3: 0.0000477872,
+          Field4: ''
+        },
+        {
+          Field1: 729,
+          Field2: 0.000687018,
+          Field3: 0.0000445862,
+          Field4: ''
+        },
+        {
+          Field1: 730,
+          Field2: 0.000639373,
+          Field3: 0.0000416049,
+          Field4: ''
+        },
+        {
+          Field1: 731,
+          Field2: 0.000595057,
+          Field3: 0.0000388245,
+          Field4: ''
+        },
+        {
+          Field1: 732,
+          Field2: 0.000553797,
+          Field3: 0.0000362302,
+          Field4: ''
+        },
+        {
+          Field1: 733,
+          Field2: 0.00051535,
+          Field3: 0.0000338086,
+          Field4: ''
+        },
+        {
+          Field1: 734,
+          Field2: 0.000479496,
+          Field3: 0.0000315474,
+          Field4: ''
+        },
+        {
+          Field1: 735,
+          Field2: 0.000446035,
+          Field3: 0.0000294354,
+          Field4: ''
+        },
+        {
+          Field1: 736,
+          Field2: 0.000414809,
+          Field3: 0.0000274634,
+          Field4: ''
+        },
+        {
+          Field1: 737,
+          Field2: 0.000385749,
+          Field3: 0.0000256268,
+          Field4: ''
+        },
+        {
+          Field1: 738,
+          Field2: 0.000358792,
+          Field3: 0.0000239217,
+          Field4: ''
+        },
+        {
+          Field1: 739,
+          Field2: 0.000333861,
+          Field3: 0.0000223432,
+          Field4: ''
+        },
+        {
+          Field1: 740,
+          Field2: 0.000310869,
+          Field3: 0.000020886,
+          Field4: ''
+        },
+        {
+          Field1: 741,
+          Field2: 0.000289699,
+          Field3: 0.0000195424,
+          Field4: ''
+        },
+        {
+          Field1: 742,
+          Field2: 0.000270145,
+          Field3: 0.000018299,
+          Field4: ''
+        },
+        {
+          Field1: 743,
+          Field2: 0.000252007,
+          Field3: 0.0000171423,
+          Field4: ''
+        },
+        {
+          Field1: 744,
+          Field2: 0.000235117,
+          Field3: 0.0000160611,
+          Field4: ''
+        },
+        {
+          Field1: 745,
+          Field2: 0.000219329,
+          Field3: 0.0000150458,
+          Field4: ''
+        },
+        {
+          Field1: 746,
+          Field2: 0.000204535,
+          Field3: 0.0000140893,
+          Field4: ''
+        },
+        {
+          Field1: 747,
+          Field2: 0.000190692,
+          Field3: 0.0000131899,
+          Field4: ''
+        },
+        {
+          Field1: 748,
+          Field2: 0.000177771,
+          Field3: 0.0000123462,
+          Field4: ''
+        },
+        {
+          Field1: 749,
+          Field2: 0.000165736,
+          Field3: 0.0000115569,
+          Field4: ''
+        },
+        {
+          Field1: 750,
+          Field2: 0.000154549,
+          Field3: 0.00001082,
+          Field4: ''
+        },
+        {
+          Field1: 751,
+          Field2: 0.000144167,
+          Field3: 0.0000101334,
+          Field4: ''
+        },
+        {
+          Field1: 752,
+          Field2: 0.000134528,
+          Field3: 0.00000949367,
+          Field4: ''
+        },
+        {
+          Field1: 753,
+          Field2: 0.000125574,
+          Field3: 0.00000889736,
+          Field4: ''
+        },
+        {
+          Field1: 754,
+          Field2: 0.000117251,
+          Field3: 0.00000834135,
+          Field4: ''
+        },
+        {
+          Field1: 755,
+          Field2: 0.000109508,
+          Field3: 0.00000782271,
+          Field4: ''
+        },
+        {
+          Field1: 756,
+          Field2: 0.0001023,
+          Field3: 0.00000733865,
+          Field4: ''
+        },
+        {
+          Field1: 757,
+          Field2: 0.0000955828,
+          Field3: 0.00000688612,
+          Field4: ''
+        },
+        {
+          Field1: 758,
+          Field2: 0.0000893161,
+          Field3: 0.00000646228,
+          Field4: ''
+        },
+        {
+          Field1: 759,
+          Field2: 0.0000834631,
+          Field3: 0.00000606462,
+          Field4: ''
+        },
+        {
+          Field1: 760,
+          Field2: 0.0000779912,
+          Field3: 0.00000569093,
+          Field4: ''
+        },
+        {
+          Field1: 761,
+          Field2: 0.000072873,
+          Field3: 0.00000533942,
+          Field4: ''
+        },
+        {
+          Field1: 762,
+          Field2: 0.0000680921,
+          Field3: 0.00000500929,
+          Field4: ''
+        },
+        {
+          Field1: 763,
+          Field2: 0.0000636342,
+          Field3: 0.00000469984,
+          Field4: ''
+        },
+        {
+          Field1: 764,
+          Field2: 0.0000594841,
+          Field3: 0.00000441034,
+          Field4: ''
+        },
+        {
+          Field1: 765,
+          Field2: 0.0000556264,
+          Field3: 0.00000413998,
+          Field4: ''
+        },
+        {
+          Field1: 766,
+          Field2: 0.000052043,
+          Field3: 0.00000388772,
+          Field4: ''
+        },
+        {
+          Field1: 767,
+          Field2: 0.0000487063,
+          Field3: 0.00000365186,
+          Field4: ''
+        },
+        {
+          Field1: 768,
+          Field2: 0.00004559,
+          Field3: 0.0000034307,
+          Field4: ''
+        },
+        {
+          Field1: 769,
+          Field2: 0.000042671,
+          Field3: 0.00000322278,
+          Field4: ''
+        },
+        {
+          Field1: 770,
+          Field2: 0.0000399295,
+          Field3: 0.00000302683,
+          Field4: ''
+        },
+        {
+          Field1: 771,
+          Field2: 0.0000373509,
+          Field3: 0.00000284192,
+          Field4: ''
+        },
+        {
+          Field1: 772,
+          Field2: 0.0000349326,
+          Field3: 0.00000266795,
+          Field4: ''
+        },
+        {
+          Field1: 773,
+          Field2: 0.000032673,
+          Field3: 0.00000250491,
+          Field4: ''
+        },
+        {
+          Field1: 774,
+          Field2: 0.000030569,
+          Field3: 0.00000235267,
+          Field4: ''
+        },
+        {
+          Field1: 775,
+          Field2: 0.0000286163,
+          Field3: 0.000002211,
+          Field4: ''
+        },
+        {
+          Field1: 776,
+          Field2: 0.0000268077,
+          Field3: 0.00000207946,
+          Field4: ''
+        },
+        {
+          Field1: 777,
+          Field2: 0.0000251286,
+          Field3: 0.000001957,
+          Field4: ''
+        },
+        {
+          Field1: 778,
+          Field2: 0.0000235645,
+          Field3: 0.00000184258,
+          Field4: ''
+        },
+        {
+          Field1: 779,
+          Field2: 0.0000221026,
+          Field3: 0.00000173528,
+          Field4: ''
+        },
+        {
+          Field1: 780,
+          Field2: 0.0000207321,
+          Field3: 0.00000163433,
+          Field4: ''
+        },
+        {
+          Field1: 781,
+          Field2: 0.0000194444,
+          Field3: 0.0000015391,
+          Field4: ''
+        },
+        {
+          Field1: 782,
+          Field2: 0.0000182351,
+          Field3: 0.00000144932,
+          Field4: ''
+        },
+        {
+          Field1: 783,
+          Field2: 0.0000171008,
+          Field3: 0.00000136478,
+          Field4: ''
+        },
+        {
+          Field1: 784,
+          Field2: 0.000016038,
+          Field3: 0.00000128526,
+          Field4: ''
+        },
+        {
+          Field1: 785,
+          Field2: 0.0000150432,
+          Field3: 0.00000121054,
+          Field4: ''
+        },
+        {
+          Field1: 786,
+          Field2: 0.0000141127,
+          Field3: 0.00000114038,
+          Field4: ''
+        },
+        {
+          Field1: 787,
+          Field2: 0.000013242,
+          Field3: 0.00000107446,
+          Field4: ''
+        },
+        {
+          Field1: 788,
+          Field2: 0.0000124263,
+          Field3: 0.00000101247,
+          Field4: ''
+        },
+        {
+          Field1: 789,
+          Field2: 0.0000116618,
+          Field3: 9.5413e-7,
+          Field4: ''
+        },
+        {
+          Field1: 790,
+          Field2: 0.0000109446,
+          Field3: 8.9917e-7,
+          Field4: ''
+        },
+        {
+          Field1: 791,
+          Field2: 0.0000102716,
+          Field3: 8.47379e-7,
+          Field4: ''
+        },
+        {
+          Field1: 792,
+          Field2: 0.00000964036,
+          Field3: 7.98635e-7,
+          Field4: ''
+        },
+        {
+          Field1: 793,
+          Field2: 0.00000904897,
+          Field3: 7.52832e-7,
+          Field4: ''
+        },
+        {
+          Field1: 794,
+          Field2: 0.00000849535,
+          Field3: 7.09857e-7,
+          Field4: ''
+        },
+        {
+          Field1: 795,
+          Field2: 0.0000079775,
+          Field3: 6.69594e-7,
+          Field4: ''
+        },
+        {
+          Field1: 796,
+          Field2: 0.00000749341,
+          Field3: 6.31907e-7,
+          Field4: ''
+        },
+        {
+          Field1: 797,
+          Field2: 0.00000704079,
+          Field3: 5.96604e-7,
+          Field4: ''
+        },
+        {
+          Field1: 798,
+          Field2: 0.00000661744,
+          Field3: 5.63495e-7,
+          Field4: ''
+        },
+        {
+          Field1: 799,
+          Field2: 0.00000622133,
+          Field3: 5.32408e-7,
+          Field4: ''
+        },
+        {
+          Field1: 800,
+          Field2: 0.00000585057,
+          Field3: 5.03187e-7,
+          Field4: ''
+        },
+        {
+          Field1: 801,
+          Field2: 0.00000550333,
+          Field3: 4.75686e-7,
+          Field4: ''
+        },
+        {
+          Field1: 802,
+          Field2: 0.00000517756,
+          Field3: 4.49753e-7,
+          Field4: ''
+        },
+        {
+          Field1: 803,
+          Field2: 0.00000487135,
+          Field3: 4.25249e-7,
+          Field4: ''
+        },
+        {
+          Field1: 804,
+          Field2: 0.000004583,
+          Field3: 4.0205e-7,
+          Field4: ''
+        },
+        {
+          Field1: 805,
+          Field2: 0.00000431102,
+          Field3: 3.80046e-7,
+          Field4: ''
+        },
+        {
+          Field1: 806,
+          Field2: 0.00000405422,
+          Field3: 3.59156e-7,
+          Field4: ''
+        },
+        {
+          Field1: 807,
+          Field2: 0.00000381213,
+          Field3: 3.39356e-7,
+          Field4: ''
+        },
+        {
+          Field1: 808,
+          Field2: 0.00000358438,
+          Field3: 3.20633e-7,
+          Field4: ''
+        },
+        {
+          Field1: 809,
+          Field2: 0.00000337053,
+          Field3: 3.02966e-7,
+          Field4: ''
+        },
+        {
+          Field1: 810,
+          Field2: 0.00000317009,
+          Field3: 2.86329e-7,
+          Field4: ''
+        },
+        {
+          Field1: 811,
+          Field2: 0.00000298248,
+          Field3: 2.70687e-7,
+          Field4: ''
+        },
+        {
+          Field1: 812,
+          Field2: 0.00000280691,
+          Field3: 2.5598e-7,
+          Field4: ''
+        },
+        {
+          Field1: 813,
+          Field2: 0.00000264257,
+          Field3: 2.42147e-7,
+          Field4: ''
+        },
+        {
+          Field1: 814,
+          Field2: 0.00000248873,
+          Field3: 2.2913e-7,
+          Field4: ''
+        },
+        {
+          Field1: 815,
+          Field2: 0.00000234468,
+          Field3: 2.16878e-7,
+          Field4: ''
+        },
+        {
+          Field1: 816,
+          Field2: 0.00000220974,
+          Field3: 2.05338e-7,
+          Field4: ''
+        },
+        {
+          Field1: 817,
+          Field2: 0.00000208315,
+          Field3: 1.94449e-7,
+          Field4: ''
+        },
+        {
+          Field1: 818,
+          Field2: 0.00000196419,
+          Field3: 1.84155e-7,
+          Field4: ''
+        },
+        {
+          Field1: 819,
+          Field2: 0.00000185222,
+          Field3: 1.74407e-7,
+          Field4: ''
+        },
+        {
+          Field1: 820,
+          Field2: 0.00000174666,
+          Field3: 1.65158e-7,
+          Field4: ''
+        },
+        {
+          Field1: 821,
+          Field2: 0.00000164705,
+          Field3: 1.56373e-7,
+          Field4: ''
+        },
+        {
+          Field1: 822,
+          Field2: 0.00000155307,
+          Field3: 1.48031e-7,
+          Field4: ''
+        },
+        {
+          Field1: 823,
+          Field2: 0.00000146448,
+          Field3: 1.40117e-7,
+          Field4: ''
+        },
+        {
+          Field1: 824,
+          Field2: 0.000001381,
+          Field3: 1.32615e-7,
+          Field4: ''
+        },
+        {
+          Field1: 825,
+          Field2: 0.00000130241,
+          Field3: 1.25508e-7,
+          Field4: ''
+        },
+        {
+          Field1: 826,
+          Field2: 0.00000122844,
+          Field3: 1.18781e-7,
+          Field4: ''
+        },
+        {
+          Field1: 827,
+          Field2: 0.00000115888,
+          Field3: 1.12416e-7,
+          Field4: ''
+        },
+        {
+          Field1: 828,
+          Field2: 0.00000109348,
+          Field3: 1.06398e-7,
+          Field4: ''
+        },
+        {
+          Field1: 829,
+          Field2: 0.00000103203,
+          Field3: 1.00711e-7,
+          Field4: ''
+        },
+        {
+          Field1: 830,
+          Field2: 9.74306e-7,
+          Field3: 9.53411e-8,
+          Field4: ''
+        }
+      ]
+    }
+  }
+}

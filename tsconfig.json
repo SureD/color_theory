@@ -9,6 +9,7 @@
     }
   ],
   "compilerOptions": {
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "types": ["three"]
   }
 }

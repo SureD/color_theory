@@ -49,10 +49,6 @@ export default {
       console.log('Initializing Three.js')
       scene = new THREE.Scene()
       scene.background = new THREE.Color(0xffffff) // White background
-      // Add a grid for a more techy look
-      const gridHelper = new THREE.GridHelper(10, 10, 0x00ff00, 0x00ff00)
-      scene.add(gridHelper)
-
       // Add some ambient light to make the scene visible
       const ambientLight = new THREE.AmbientLight(0x404040)
       scene.add(ambientLight)
@@ -99,40 +95,9 @@ export default {
       const colors = []
 
       sensitivities.forEach((v, index) => {
-        positions.push(v.x * scaleFactor, v.y * scaleFactor, v.z * scaleFactor)
-
-        // Calculate color based on wavelength
-        const t = 1 - index / (wavelengths.length - 1) // Invert t so 0 is red (max wavelength) and 1 is violet (min wavelength)
-        let r, g, b
-
-        if (t < 0.2) {
-          // Violet to Blue
-          r = t / 0.2
-          g = 0
-          b = 1
-        } else if (t < 0.4) {
-          // Blue to Cyan
-          r = 0
-          g = (t - 0.2) / 0.2
-          b = 1
-        } else if (t < 0.6) {
-          // Cyan to Green
-          r = 0
-          g = 1
-          b = 1 - (t - 0.4) / 0.2
-        } else if (t < 0.8) {
-          // Green to Yellow
-          r = (t - 0.6) / 0.2
-          g = 1
-          b = 0
-        } else {
-          // Yellow to Red
-          r = 1
-          g = 1 - (t - 0.8) / 0.2
-          b = 0
-        }
-
-        colors.push(r, g, b)
+        positions.push(v.y * scaleFactor, v.z * scaleFactor, v.x * scaleFactor)
+        const color = colorModelGenerator.wavelengthToRGB(wavelengths[index])
+        colors.push(color.x, color.y, color.z)
       })
 
       geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
@@ -142,13 +107,14 @@ export default {
       const line = new THREE.Line(geometry, material)
 
       scene.add(line)
+      drawPoint([0, 0, 1])
     }
 
     function drawColorSpaceModel() {
       console.log('Drawing sensitivity view')
       // Draw 3D axes
-      const axesHelper = new THREE.AxesHelper(5)
-      axesHelper.material.linewidth = 5 // Increase line width for better visibility
+      const axesHelper = new THREE.AxesHelper(6) // Increased size
+      axesHelper.material.linewidth = 3 // Reduced linewidth (note: linewidth > 1 may not work in WebGL)
       axesHelper.setColors(0x00ff00, 0x0000ff, 0xff0000) // Set colors: x-green, y-blue, z-red
       scene.add(axesHelper)
 
@@ -172,11 +138,42 @@ export default {
         scene.add(textMesh)
       })
 
-      // Add a subtle grid for better depth perception
-      const gridHelper = new THREE.GridHelper(10, 10, 0xcccccc, 0xcccccc)
-      gridHelper.material.opacity = 0.5
+      // Modify the grid
+      const gridHelper = new THREE.GridHelper(10, 10, 0xcccccc, 0xcccccc) // Lighter color
+      gridHelper.material.opacity = 0.5 // Make it semi-transparent
       gridHelper.material.transparent = true
+      gridHelper.position.y = -0.01 // Move it slightly below the axes
       scene.add(gridHelper)
+    }
+
+    function drawPoint(positions = []) {
+      console.log(positions)
+      positions.forEach((position, index) => {
+        const geometry = new THREE.SphereGeometry(0.1, 32, 32) // Create a small sphere
+        const material = new THREE.MeshBasicMaterial({ color: 0xffff00 }) // Yellow color
+        const sphere = new THREE.Mesh(geometry, material)
+        sphere.position.set(
+          position[0] * scaleFactor,
+          position[1] * scaleFactor,
+          position[2] * scaleFactor
+        )
+        scene.add(sphere)
+
+        // Add a label for the point
+        const textGeometry = new TextGeometry(`${index}`, {
+          font: font,
+          size: 0.2,
+          height: 0.05
+        })
+        const textMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 })
+        const textMesh = new THREE.Mesh(textGeometry, textMaterial)
+        textMesh.position.set(
+          position[0] * scaleFactor + 0.2,
+          position[1] * scaleFactor,
+          position[2] * scaleFactor
+        )
+        scene.add(textMesh)
+      })
     }
 
     function animate() {
