@@ -83,18 +83,33 @@ export default {
 
     function updateColorStrengths(changedColor) {
       const otherColors = ['R', 'G', 'B'].filter((c) => c !== changedColor)
-      const remainingStrength = 1 - colorStrengths[changedColor]
+      const remainingStrength = Math.max(0, Math.min(1, 1 - colorStrengths[changedColor]))
 
       if (remainingStrength <= 0) {
         colorStrengths[changedColor] = 1
         otherColors.forEach((c) => (colorStrengths[c] = 0))
       } else {
-        const ratio =
-          (colorStrengths[otherColors[0]] + colorStrengths[otherColors[1]]) / remainingStrength
-        otherColors.forEach((c) => {
-          colorStrengths[c] =
-            remainingStrength *
-            (colorStrengths[c] / (colorStrengths[otherColors[0]] + colorStrengths[otherColors[1]]))
+        const totalOtherStrength = otherColors.reduce((sum, c) => sum + colorStrengths[c], 0)
+
+        if (totalOtherStrength > 0) {
+          const ratio = remainingStrength / totalOtherStrength
+          otherColors.forEach((c) => {
+            colorStrengths[c] = Math.max(0, Math.min(1, colorStrengths[c] * ratio))
+          })
+        } else {
+          // If other strengths are 0, distribute remaining strength equally
+          otherColors.forEach((c) => {
+            colorStrengths[c] = remainingStrength / 2
+          })
+        }
+      }
+
+      // Ensure the total is always 1
+      const total = Object.values(colorStrengths).reduce((sum, val) => sum + val, 0)
+      if (total !== 1) {
+        const scale = 1 / total
+        Object.keys(colorStrengths).forEach((c) => {
+          colorStrengths[c] *= scale
         })
       }
 
