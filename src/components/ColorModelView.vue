@@ -15,6 +15,21 @@
           <span>{{ primaryWavelengths[color] }} nm</span>
         </div>
       </div>
+      <div class="controls">
+        <div v-for="color in ['R', 'G', 'B']" :key="color" class="color-control">
+          <label>{{ color }} strength:</label>
+          <input
+            type="range"
+            v-model.number="colorStrengths[color]"
+            min="0"
+            max="1"
+            step="0.01"
+            @input="updateColorStrengths(color)"
+          />
+          <span>{{ colorStrengths[color].toFixed(2) }}</span>
+        </div>
+      </div>
+      <p>Total strength: {{ totalStrength.toFixed(2) }}</p>
       <input
         type="range"
         v-model="selectedWavelength"
@@ -33,7 +48,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
-import { onMounted, ref, reactive } from 'vue'
+import { onMounted, ref, reactive, computed } from 'vue'
 import { ColorModelGenerator } from '@/utils/color_model_genrator'
 
 export default {
@@ -55,6 +70,36 @@ export default {
       B: 435
     })
     let primaryTriangle
+
+    const colorStrengths = reactive({
+      R: 0.33,
+      G: 0.33,
+      B: 0.34
+    })
+
+    const totalStrength = computed(() => {
+      return colorStrengths.R + colorStrengths.G + colorStrengths.B
+    })
+
+    function updateColorStrengths(changedColor) {
+      const otherColors = ['R', 'G', 'B'].filter((c) => c !== changedColor)
+      const remainingStrength = 1 - colorStrengths[changedColor]
+
+      if (remainingStrength <= 0) {
+        colorStrengths[changedColor] = 1
+        otherColors.forEach((c) => (colorStrengths[c] = 0))
+      } else {
+        const ratio =
+          (colorStrengths[otherColors[0]] + colorStrengths[otherColors[1]]) / remainingStrength
+        otherColors.forEach((c) => {
+          colorStrengths[c] =
+            remainingStrength *
+            (colorStrengths[c] / (colorStrengths[otherColors[0]] + colorStrengths[otherColors[1]]))
+        })
+      }
+
+      updatePrimaryTriangle()
+    }
 
     onMounted(() => {
       console.log('Component mounted')
@@ -241,6 +286,14 @@ export default {
       primaryTriangle.originLines = lineGeometries.map((geo) => new THREE.Line(geo))
       primaryTriangle.originLines.forEach((line) => scene.add(line))
 
+      // Create geometry for the cube
+      const cubeGeometry = new THREE.BufferGeometry()
+      primaryTriangle.cube = new THREE.Line(
+        cubeGeometry,
+        new THREE.LineBasicMaterial({ color: 0x000000 })
+      )
+      scene.add(primaryTriangle.cube)
+
       updatePrimaryTriangle()
     }
 
@@ -265,7 +318,6 @@ export default {
         const rgbColor = colorModelGenerator.wavelengthToRGB(primaryWavelengths[color])
         colors.push(rgbColor.x, rgbColor.y, rgbColor.z)
 
-        // Add positions for lines from origin to each point
         originLinePositions[i] = [0, 0, 0, ...position]
       }
 
@@ -282,21 +334,36 @@ export default {
       primaryTriangle.geometry.attributes.position.needsUpdate = true
       primaryTriangle.geometry.attributes.color.needsUpdate = true
 
-      // Update material for main triangle
-      primaryTriangle.material = new THREE.MeshBasicMaterial({
-        vertexColors: true,
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.7
-      })
+      // Update or create material for the triangle
+      if (!primaryTriangle.material || !primaryTriangle.material.vertexColors) {
+        primaryTriangle.material = new THREE.LineBasicMaterial({ vertexColors: true })
+      }
 
       // Update or create mesh for the filled triangle
       if (!primaryTriangle.mesh) {
-        primaryTriangle.mesh = new THREE.Mesh(primaryTriangle.geometry, primaryTriangle.material)
+        const meshGeometry = new THREE.BufferGeometry()
+        meshGeometry.setAttribute(
+          'position',
+          new THREE.Float32BufferAttribute(positions.slice(0, 9), 3)
+        )
+        meshGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors.slice(0, 9), 3))
+        const meshMaterial = new THREE.MeshBasicMaterial({
+          vertexColors: true,
+          side: THREE.DoubleSide
+        })
+        primaryTriangle.mesh = new THREE.Mesh(meshGeometry, meshMaterial)
         scene.add(primaryTriangle.mesh)
       } else {
-        primaryTriangle.mesh.geometry = primaryTriangle.geometry
-        primaryTriangle.mesh.material = primaryTriangle.material
+        primaryTriangle.mesh.geometry.setAttribute(
+          'position',
+          new THREE.Float32BufferAttribute(positions.slice(0, 9), 3)
+        )
+        primaryTriangle.mesh.geometry.setAttribute(
+          'color',
+          new THREE.Float32BufferAttribute(colors.slice(0, 9), 3)
+        )
+        primaryTriangle.mesh.geometry.attributes.position.needsUpdate = true
+        primaryTriangle.mesh.geometry.attributes.color.needsUpdate = true
       }
 
       // Update lines from origin to each point
@@ -306,10 +373,108 @@ export default {
           new THREE.Float32BufferAttribute(originLinePositions[index], 3)
         )
         line.geometry.attributes.position.needsUpdate = true
-        line.material = new THREE.LineBasicMaterial({
-          color: new THREE.Color().fromArray(colors.slice(index * 3, index * 3 + 3))
-        })
+        line.material.color.setRGB(colors[index * 3], colors[index * 3 + 1], colors[index * 3 + 2])
       })
+
+      // Calculate the cube endpoint based on color strengths
+      const cubeEndpoint = new THREE.Vector3(
+        positions[0] * colorStrengths.R +
+          positions[3] * colorStrengths.G +
+          positions[6] * colorStrengths.B,
+        positions[1] * colorStrengths.R +
+          positions[4] * colorStrengths.G +
+          positions[7] * colorStrengths.B,
+        positions[2] * colorStrengths.R +
+          positions[5] * colorStrengths.G +
+          positions[8] * colorStrengths.B
+      )
+
+      // Update cube geometry
+      const cubeVertices = [
+        0,
+        0,
+        0,
+        positions[0] * colorStrengths.R,
+        positions[1] * colorStrengths.R,
+        positions[2] * colorStrengths.R,
+        0,
+        0,
+        0,
+        positions[3] * colorStrengths.G,
+        positions[4] * colorStrengths.G,
+        positions[5] * colorStrengths.G,
+        0,
+        0,
+        0,
+        positions[6] * colorStrengths.B,
+        positions[7] * colorStrengths.B,
+        positions[8] * colorStrengths.B,
+        cubeEndpoint.x,
+        cubeEndpoint.y,
+        cubeEndpoint.z,
+        positions[0] * colorStrengths.R,
+        positions[1] * colorStrengths.R,
+        positions[2] * colorStrengths.R,
+        cubeEndpoint.x,
+        cubeEndpoint.y,
+        cubeEndpoint.z,
+        positions[3] * colorStrengths.G,
+        positions[4] * colorStrengths.G,
+        positions[5] * colorStrengths.G,
+        cubeEndpoint.x,
+        cubeEndpoint.y,
+        cubeEndpoint.z,
+        positions[6] * colorStrengths.B,
+        positions[7] * colorStrengths.B,
+        positions[8] * colorStrengths.B,
+        positions[0] * colorStrengths.R,
+        positions[1] * colorStrengths.R,
+        positions[2] * colorStrengths.R,
+        positions[0] * colorStrengths.R + positions[3] * colorStrengths.G,
+        positions[1] * colorStrengths.R + positions[4] * colorStrengths.G,
+        positions[2] * colorStrengths.R + positions[5] * colorStrengths.G,
+        positions[3] * colorStrengths.G,
+        positions[4] * colorStrengths.G,
+        positions[5] * colorStrengths.G,
+        positions[3] * colorStrengths.G + positions[6] * colorStrengths.B,
+        positions[4] * colorStrengths.G + positions[7] * colorStrengths.B,
+        positions[5] * colorStrengths.G + positions[8] * colorStrengths.B,
+        positions[6] * colorStrengths.B,
+        positions[7] * colorStrengths.B,
+        positions[8] * colorStrengths.B,
+        positions[6] * colorStrengths.B + positions[0] * colorStrengths.R,
+        positions[7] * colorStrengths.B + positions[1] * colorStrengths.R,
+        positions[8] * colorStrengths.B + positions[2] * colorStrengths.R
+      ]
+
+      primaryTriangle.cube.geometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute(cubeVertices, 3)
+      )
+      primaryTriangle.cube.geometry.attributes.position.needsUpdate = true
+
+      // Calculate the point position based on color strengths
+      const pointPosition = new THREE.Vector3(
+        positions[0] * colorStrengths.R +
+          positions[3] * colorStrengths.G +
+          positions[6] * colorStrengths.B,
+        positions[1] * colorStrengths.R +
+          positions[4] * colorStrengths.G +
+          positions[7] * colorStrengths.B,
+        positions[2] * colorStrengths.R +
+          positions[5] * colorStrengths.G +
+          positions[8] * colorStrengths.B
+      )
+
+      // Create or update the point in the triangle
+      if (!primaryTriangle.point) {
+        const pointGeometry = new THREE.SphereGeometry(0.1, 32, 32)
+        const pointMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 }) // Black color
+        primaryTriangle.point = new THREE.Mesh(pointGeometry, pointMaterial)
+        scene.add(primaryTriangle.point)
+      }
+
+      primaryTriangle.point.position.copy(pointPosition)
     }
 
     function animate() {
@@ -324,7 +489,10 @@ export default {
       wavelengthRange,
       updateWavelengthLine,
       primaryWavelengths,
-      updatePrimaryTriangle
+      updatePrimaryTriangle,
+      colorStrengths,
+      totalStrength,
+      updateColorStrengths
     }
   }
 }
