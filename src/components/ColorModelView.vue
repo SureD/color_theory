@@ -2,6 +2,14 @@
   <div>
     <div class="frame">
       <div ref="container" style="width: 500px; height: 500px"></div>
+      <input
+        type="range"
+        v-model="selectedWavelength"
+        :min="wavelengthRange.min"
+        :max="wavelengthRange.max"
+        @input="updateWavelengthLine"
+      />
+      <p>Selected Wavelength: {{ selectedWavelength }} nm</p>
       <p>ColorModelView Component</p>
     </div>
   </div>
@@ -12,7 +20,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, reactive } from 'vue'
 import { ColorModelGenerator } from '@/utils/color_model_genrator'
 
 export default {
@@ -24,6 +32,10 @@ export default {
     let colorModelGenerator = new ColorModelGenerator()
     const scaleFactor = 5
 
+    const selectedWavelength = ref(550) // Default wavelength
+    const wavelengthRange = reactive(colorModelGenerator.getWavelengthRange())
+    let wavelengthLine
+
     onMounted(() => {
       console.log('Component mounted')
       loadFont().then(() => {
@@ -31,6 +43,7 @@ export default {
         initThreeJS()
         drawColorSpaceModel()
         drawLoctus()
+        drawWavelengthLine()
         animate()
       })
     })
@@ -176,13 +189,46 @@ export default {
       })
     }
 
+    function drawWavelengthLine() {
+      const geometry = new THREE.BufferGeometry()
+      const material = new THREE.LineBasicMaterial({ color: 0x000000 })
+      wavelengthLine = new THREE.Line(geometry, material)
+      scene.add(wavelengthLine)
+      updateWavelengthLine()
+    }
+
+    function updateWavelengthLine() {
+      const sensitivity = colorModelGenerator.wavelengthToSensitivity(
+        selectedWavelength.value,
+        true
+      )
+      const positions = [
+        0,
+        0,
+        0,
+        sensitivity.y * scaleFactor,
+        sensitivity.z * scaleFactor,
+        sensitivity.x * scaleFactor
+      ]
+      wavelengthLine.geometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute(positions, 3)
+      )
+      wavelengthLine.geometry.attributes.position.needsUpdate = true
+    }
+
     function animate() {
       requestAnimationFrame(animate)
       controls.update() // Update controls in the animation loop
       renderer.render(scene, camera)
     }
 
-    return { container }
+    return {
+      container,
+      selectedWavelength,
+      wavelengthRange,
+      updateWavelengthLine
+    }
   }
 }
 </script>
@@ -196,5 +242,10 @@ export default {
 
 .human-sensitivity {
   display: inline-block;
+}
+
+input[type='range'] {
+  width: 100%;
+  margin-top: 10px;
 }
 </style>
